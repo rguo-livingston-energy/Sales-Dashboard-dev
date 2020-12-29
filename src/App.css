@@ -1,38 +1,68 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main {
+  min-width: 1000px;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.nav {
+  display: flex;
+  font-size: 30px;
+  width: 100%;
+  height: 10%;
+  color: #4f4e4e;
+  line-height: 100px;
+  overflow: hidden;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, .3); 
+}
+
+.nav img {
+  margin: auto 100px;
+  height: 70px;
+}
+
+.nav span {
+  margin: auto 300px;
+  line-height: 80px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sales-chart {
+  margin: 30px;
+  width: 1000px;
+  height: 600px;
+  padding: 50px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, .3); 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.goal {
+  color: #666;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 30px;
+  width: 1000px;
+  min-height: 250px;
+  padding: 50px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, .3); 
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  width: 400px;
+  padding: 10px 40px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.doughnut{
+  margin-left: 130px;
 }
