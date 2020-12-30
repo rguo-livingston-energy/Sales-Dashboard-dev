@@ -3,7 +3,7 @@ import { Bar } from 'react-chartjs-2';
 function BarChart(props) {
     // const sales = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'A', 'B', 'C', 'D'];
     // const activePort = [12, 19, 3, 5, 2, 3, 4, 12, 1, 3];
-    const goal = [70, 50, 80, 20, 10, 15, 20, 15, 10, 4];
+    // const goal = [70, 50, 80, 20, 10, 15, 20, 15, 10, 4];
     const backgroundColor = [
         'rgba(255, 99, 132, 1)',
         'rgba(153, 102, 255, 1)',
@@ -43,7 +43,7 @@ function BarChart(props) {
                         },
                         {
                             label: 'Goal',
-                            data: goal,
+                            data: props.goal,
                             backgroundColor: borderColor
                         }
                     ]

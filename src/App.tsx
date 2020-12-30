@@ -20,14 +20,17 @@ interface IFunnelData {
 
 
 function App() {
+  // Properties
   const [sales, setSales] = useState<string[]>([]);
   const [fundingPorts, setFundingPorts] = useState<number[]>([]);
   const [goalPorts, setGoalPorts] = useState<number>(200);
   const [totalPorts, setTotalPorts] = useState<[number, number]>([0, 0]);
   const [funnelData, setFunnelData] = useState<IFunnelData[]>([]);
-  
-  
+  const [averageGoalPorts, setAverageGoalPorts] = useState<number[]>([]);
 
+  
+  
+  // onClick handler function
   function addGoal():void {
     setGoalPorts(goalPorts + 50);
   }
@@ -55,6 +58,7 @@ function App() {
 
     const salesTemp:string[] = [];
     const fundingPortsTemp: number[] = [];
+    const averageGoalPortsTemp: number[] = [];
     
     let totalFundingPorts: number = 0;
     let totalSiteWalkPorts: number = 0;
@@ -76,6 +80,11 @@ function App() {
       totalFundingPorts = fundingPortsTemp.reduce(reducer);
       setTotalPorts([totalFundingPorts, goalPorts - totalFundingPorts]);
 
+      for (let i = 0; i < fundingPorts.length; i++) {
+        averageGoalPortsTemp.push(Math.floor(goalPorts / fundingPorts.length));
+      }
+      setAverageGoalPorts(averageGoalPortsTemp);
+
       const funnelDataTemp: IFunnelData[] = [ 
         { name: 'Site walk', value: totalSiteWalkPorts },
         { name: 'Proposal', value: totalProposalPorts },
@@ -86,7 +95,7 @@ function App() {
 
     });
    
-  }, [goalPorts]);
+  }, [fundingPorts.length, goalPorts]);
 
   return (
     <div className="main">
@@ -100,7 +109,7 @@ function App() {
         <div className="main-chart">
           <div>
             <div className="sales-chart">
-              <BarChart sales={sales} activePort={fundingPorts} />
+              <BarChart sales={sales} activePort={fundingPorts} goal={averageGoalPorts} />
             </div>
             <div className="goal">
               <div className="doughnut">
