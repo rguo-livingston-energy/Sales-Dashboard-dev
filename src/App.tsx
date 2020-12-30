@@ -15,7 +15,17 @@ function App() {
   const [sales, setSales] = useState<string[]>([]);
   const [numPorts, setNumPorts] = useState<number[]>([]);
   const [goalPorts, setGoalPorts] = useState<number>(200);
-  const [totalPorts, setTotalPorts] = useState<number>(0);
+  const [totalPorts, setTotalPorts] = useState<[number, number]>([0, 0]);
+
+  function addGoal():void {
+    setGoalPorts(goalPorts + 50);
+  }
+
+  function subGoal():void {
+    if (goalPorts >= 50) {
+      setGoalPorts(goalPorts - 50);
+    } 
+  }
 
   useEffect(() => {
     const loadSales = async (): Promise<IDeal[]> => {
@@ -34,6 +44,7 @@ function App() {
 
     const salesTemp:string[] = [];
     const numPortsTemp: number[] = [];
+    let totalPortsTemp: number = 0;
     const reducer = (accumulator: number, currentValue: number) => accumulator + currentValue;
 
     loadSales().then((deals) => {
@@ -45,10 +56,12 @@ function App() {
 
       setSales(salesTemp);
       setNumPorts(numPortsTemp);
-     
+      totalPortsTemp = numPortsTemp.reduce(reducer);
+      setTotalPorts([totalPortsTemp, goalPorts - totalPortsTemp]);
+
     });
    
-  }, []);
+  }, [goalPorts]);
 
   return (
     <div className="main">
@@ -61,10 +74,10 @@ function App() {
       </div>
       <div className="goal">
         <div className="doughnut">
-          <DoughnutChart />
+          <DoughnutChart ports={totalPorts} />
         </div>
-        <div className="card">
-          <Card />
+        <div className="goal-card">
+          <Card totalPorts={totalPorts[0]} goal={goalPorts} remaining={totalPorts[1]} addGoal={addGoal} subGoal={subGoal} />
         </div>
       </div>
     </div>

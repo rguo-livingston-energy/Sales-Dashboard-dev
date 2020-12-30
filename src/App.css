@@ -53,16 +53,17 @@
   margin-bottom: 30px;
   width: 1000px;
   min-height: 250px;
-  padding: 50px;
+  /* padding: 50px; */
   border-radius: 5px;
+  align-items: center;
   box-shadow: 0px 0px 50px rgba(0, 0, 0, .3); 
 }
 
-.card {
+.goal-card {
   width: 400px;
   padding: 10px 40px;
 }
 
 .doughnut{
-  margin-left: 130px;
+  margin-left: 15%;
 }
