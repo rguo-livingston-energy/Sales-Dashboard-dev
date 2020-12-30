@@ -47,9 +47,9 @@ function App() {
       // return res.data as IDeal[];
 
       return [
-        { "salesPerson": "Sami Hammer", "siteWalkPorts": 100, "proposalPorts": 65, "fundingPorts": 35 },
-        { "salesPerson": "Amanda Lenord", "siteWalkPorts": 20, "proposalPorts": 50, "fundingPorts": 100 },
-        { "salesPerson": "Steve Coons", "siteWalkPorts": 250, "proposalPorts": 100, "fundingPorts": 60 }
+        { "salesPerson": "Sami Hammer", "siteWalkPorts": 150, "proposalPorts": 65, "fundingPorts": 35 },
+        { "salesPerson": "Amanda Lenord", "siteWalkPorts": 125, "proposalPorts": 45, "fundingPorts": 20 },
+        { "salesPerson": "Steve Coons", "siteWalkPorts": 50, "proposalPorts": 100, "fundingPorts": 60 }
       ];
     };
 
@@ -90,17 +90,26 @@ function App() {
 
   return (
     <div className="main">
-    
+      
       <div className="nav">
         <img src="https://static.wixstatic.com/media/32ee6e_e93acb3455d4409294d442b56439137c~mv2.png/v1/fill/w_626,h_200,al_c,q_85,usm_0.66_1.00_0.01/LE%20LOGO2019%20TRANS.webp" alt="logo"/>
-        <span>Sales Dashboard</span>
+        <span>Sales Dashboard</span> 
       </div>
     
-
       <div>
         <div className="main-chart">
-          <div className="sales-chart">
-            <BarChart sales={sales} activePort={fundingPorts} />
+          <div>
+            <div className="sales-chart">
+              <BarChart sales={sales} activePort={fundingPorts} />
+            </div>
+            <div className="goal">
+              <div className="doughnut">
+                <DoughnutChart ports={totalPorts} />
+              </div>
+              <div className="goal-card">
+                <Card totalPorts={totalPorts[0]} goal={goalPorts} remaining={totalPorts[1]} addGoal={addGoal} subGoal={subGoal} />
+              </div>
+            </div>
           </div>
           <div className="funnel">
             <h4>Stage</h4>
@@ -108,18 +117,12 @@ function App() {
           </div> 
         </div> 
       </div>
-       
-      <div className="goal">
-        <div className="doughnut">
-          <DoughnutChart ports={totalPorts} />
-        </div>
-        <div className="goal-card">
-          <Card totalPorts={totalPorts[0]} goal={goalPorts} remaining={totalPorts[1]} addGoal={addGoal} subGoal={subGoal} />
-        </div>
-      </div>
     </div>
 
   );
 }
 
 export default App;
+
+
+

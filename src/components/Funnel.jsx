@@ -9,7 +9,7 @@ function Funnel(props) {
           //showNames={false}
           data={props.funnelData}
           heightRelativeToValue={true}
-          chartHeight={400}
+          chartHeight={600}
           // style={{
           //   color: 'black', 
           //   fontSize: '2px'

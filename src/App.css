@@ -33,7 +33,7 @@
 }
 
 .nav span {
-  margin: auto 300px;
+  margin: auto 20%;
   line-height: 80px;
   text-align: center;
 }
@@ -57,7 +57,7 @@
   color: #666;
   display: flex;
   margin-bottom: 30px;
-  width: 1400px;
+  width: 1000px;
   min-height: 250px;
   /* padding: 50px; */
   border-radius: 5px;
@@ -71,5 +71,5 @@
 }
 
 .doughnut{
-  margin-left: 25%;
+  margin-left: 20%;
 }
