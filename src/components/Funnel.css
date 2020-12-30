@@ -1,0 +1,14 @@
+.funnel {
+    color: #666;
+    margin: 30px 0 30px 30px;
+    width: 500px;
+    height: 500px;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, .3); 
+  }
+  
+  .funnel h4 {
+    margin-left: 40%;
+    margin-bottom: 20px;
+  }
