@@ -86,8 +86,8 @@ function App() {
       setAverageGoalPorts(averageGoalPortsTemp);
 
       const funnelDataTemp: IFunnelData[] = [ 
-        { name: 'Site walk', value: totalSiteWalkPorts },
-        { name: 'Proposal', value: totalProposalPorts },
+        { name: 'Site walk', value: totalSiteWalkPorts + totalProposalPorts + totalFundingPorts},
+        { name: 'Proposal', value: totalProposalPorts + totalFundingPorts },
         { name: 'Funding', value: totalFundingPorts } 
       ];
 
