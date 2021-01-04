@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import FunnelGraph from "funnel-graph-js";
 import "funnel-graph-js/dist/css/main.css";
 import "funnel-graph-js/dist/css/theme.css";
