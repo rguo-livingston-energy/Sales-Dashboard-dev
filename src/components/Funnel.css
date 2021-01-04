@@ -35,8 +35,10 @@
 .svg-funnel-js .svg-funnel-js__labels .svg-funnel-js__label .label__title {
     color: #C1C1C1;
     font-size: 14px;
+    font-weight: normal;
 }
 
 .svg-funnel-js .svg-funnel-js__labels .svg-funnel-js__label .label__percentage {
     color: #C1C1C1;
+    font-weight: normal;
 }
