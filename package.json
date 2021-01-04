@@ -13,6 +13,7 @@
     "bootstrap": "^4.5.3",
     "chart.js": "^2.9.4",
     "chartjs-plugin-datalabels": "^0.7.0",
+    "funnel-graph-js": "^1.4.2",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-chartjs-2": "^2.11.1",

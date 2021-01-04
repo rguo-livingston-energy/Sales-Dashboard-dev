@@ -1,14 +1,42 @@
+
 .funnel {
-    color: #666;
+    background-color: white;
     margin: 30px 0 30px 30px;
     width: 600px;
     height: 780px;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0px 0px 50px rgba(0, 0, 0, .3); 
+    display: flex;
   }
   
   .funnel h4 {
     margin-left: 40%;
     margin-bottom: 20px;
   }
+
+.fun {
+    width: 300px;
+    
+}
+
+.svg-funnel-js__subLabels {
+    bottom: 10px;
+}
+
+.svg-funnel-js .svg-funnel-js__labels .svg-funnel-js__label .label__value {
+    color: #4f4e4e;
+}
+
+/* .svg-funnel-js .svg-funnel-js__subLabels .svg-funnel-js__subLabel {
+    color: #4f4e4e;
+} */
+
+.svg-funnel-js .svg-funnel-js__labels .svg-funnel-js__label .label__title {
+    color: #C1C1C1;
+    font-size: 14px;
+}
+
+.svg-funnel-js .svg-funnel-js__labels .svg-funnel-js__label .label__percentage {
+    color: #C1C1C1;
+}

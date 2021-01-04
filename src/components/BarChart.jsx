@@ -42,7 +42,7 @@ function BarChart(props) {
                             borderWidth: 1
                         },
                         {
-                            label: 'Goal',
+                            label: 'Avg. Goal',
                             data: props.goal,
                             backgroundColor: borderColor
                         }
