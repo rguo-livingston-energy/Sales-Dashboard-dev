@@ -8,6 +8,7 @@
     border-radius: 5px;
     box-shadow: 0px 0px 50px rgba(0, 0, 0, .3); 
     display: flex;
+    overflow: hidden;
   }
   
   .funnel h4 {
@@ -33,12 +34,10 @@
 } */
 
 .svg-funnel-js .svg-funnel-js__labels .svg-funnel-js__label .label__title {
-    color: #C1C1C1;
+    color: #4f4e4e;
     font-size: 14px;
-    font-weight: normal;
 }
 
 .svg-funnel-js .svg-funnel-js__labels .svg-funnel-js__label .label__percentage {
-    color: #C1C1C1;
-    font-weight: normal;
+    color: #4f4e4e;
 }

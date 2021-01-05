@@ -20,12 +20,12 @@ function App() {
   const [sales, setSales] = useState<string[]>([]);
   const [fundingPorts, setFundingPorts] = useState<number[]>([]);
   const [goalPorts, setGoalPorts] = useState<number>(Number(localStorage.getItem('goalPortsInLocalStorage')) || 200);
-  const [totalPorts, setTotalPorts] = useState<[number, number]>([0, 0]);
+  const [totalFundingPortsAndRemainingPorts, setTotalFundingPortsAndRemainingPorts] = useState<[number, number]>([0, 0]);
   const [funnelData, setFunnelData] = useState<number[]>([]);
   const [averageGoalPorts, setAverageGoalPorts] = useState<number[]>([]);
 
 
-  // onClick handler function
+  // onClick handler function and save the value in local storage
   function addGoal(): void {
     const temp: number =  goalPorts + 50;
     setGoalPorts(temp);
@@ -42,6 +42,7 @@ function App() {
 
   useEffect(() => {
     const loadSales = async (): Promise<IDeal[]> => {
+      // Fetching data from backend api
       // const res = await (
       //   await fetch('https://dev-api.livingstonenergygroup.com/bitrix-api/retrieve-sales-by-person')
       // ).json();
@@ -51,8 +52,8 @@ function App() {
       return [
         {
           salesPerson: "Sami Hammer",
-          siteWalkPorts: 150,
-          proposalPorts: 65,
+          siteWalkPorts: 200,
+          proposalPorts: 45,
           fundingPorts: 35,
         },
         {
@@ -65,11 +66,15 @@ function App() {
           salesPerson: "Steve Coons",
           siteWalkPorts: 50,
           proposalPorts: 100,
-          fundingPorts: 60,
+          fundingPorts: 10,
         },
       ];
     };
 
+    const reducer = (accumulator: number, currentValue: number) =>
+      accumulator + currentValue;
+
+    // Temporary properties
     const salesTemp: string[] = [];
     const fundingPortsTemp: number[] = [];
     const averageGoalPortsTemp: number[] = [];
@@ -77,34 +82,34 @@ function App() {
     let totalFundingPorts: number = 0;
     let totalSiteWalkPorts: number = 0;
     let totalProposalPorts: number = 0;
-
-    const reducer = (accumulator: number, currentValue: number) =>
-      accumulator + currentValue;
-
+    
+    // Processing data
     loadSales().then((deals) => {
       deals.forEach((deal) => {
-        salesTemp.push(deal.salesPerson);
-        fundingPortsTemp.push(deal.fundingPorts);
-        totalSiteWalkPorts = totalSiteWalkPorts + deal.siteWalkPorts;
-        totalProposalPorts = totalProposalPorts + deal.proposalPorts;
+        salesTemp.push(deal.salesPerson); // Getting each of sales
+        fundingPortsTemp.push(deal.fundingPorts); // Getting funding ports from each sales
+        totalSiteWalkPorts = totalSiteWalkPorts + deal.siteWalkPorts; // Total number of site walk ports
+        totalProposalPorts = totalProposalPorts + deal.proposalPorts; // Total number of proposal ports
       });
 
       setSales(salesTemp);
       setFundingPorts(fundingPortsTemp);
-      totalFundingPorts = fundingPortsTemp.reduce(reducer);
-      setTotalPorts([totalFundingPorts, goalPorts - totalFundingPorts]);
 
+      totalFundingPorts = fundingPortsTemp.reduce(reducer); // Total number of funding ports
+      setTotalFundingPortsAndRemainingPorts([totalFundingPorts, goalPorts - totalFundingPorts]);
+
+      // Average goal ports by person
       for (let i = 0; i < fundingPorts.length; i++) {
         averageGoalPortsTemp.push(Math.floor(goalPorts / fundingPorts.length));
       }
       setAverageGoalPorts(averageGoalPortsTemp);
 
+      // Funnel data
       const funnelDataTemp: number[] = [
         totalSiteWalkPorts + totalProposalPorts + totalFundingPorts,
         totalProposalPorts + totalFundingPorts,
         totalFundingPorts,
       ];
-
       setFunnelData(funnelDataTemp);
     });
 
@@ -132,13 +137,13 @@ function App() {
             </div>
             <div className="goal">
               <div className="doughnut">
-                <DoughnutChart ports={totalPorts} />
+                <DoughnutChart ports={totalFundingPortsAndRemainingPorts} />
               </div>
               <div className="goal-card">
                 <Card
-                  totalPorts={totalPorts[0]}
+                  totalFundingPortsAndRemainingPorts={totalFundingPortsAndRemainingPorts[0]}
                   goal={goalPorts}
-                  remaining={totalPorts[1]}
+                  remaining={totalFundingPortsAndRemainingPorts[1]}
                   addGoal={addGoal}
                   subGoal={subGoal}
                 />

@@ -19,18 +19,15 @@ var graph = new FunnelGraph({
     data: dataExample3,
     displayPercent: true,
     direction: 'vertical',
-    // width: 180,
-    //height: 700,
     subLabelValue: 'raw'
 });
-
-//graph.draw()
     useEffect(() => {
+      document.getElementById("fun").innerHTML = ""; // Clear all elements in the #fun <div> before draw a new SVG.
       graph.draw()
     },[props.funnelData]);
 
     return (
-      <div className="fun"></div>
+      <div className="fun" id="fun" ></div>
     );
 }
 
